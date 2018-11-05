@@ -1,0 +1,15 @@
+.userPage {
+    min-width: 800px;
+    margin: 0;
+}
+.userCardContainer {
+    max-width: 800px;
+    margin: 0 auto 0 auto;
+}
+
+.userCard {
+    width: 200px;
+    border: solid 1px;
+    margin: 5px 5px 5px 5px;
+    padding: 20px;
+}

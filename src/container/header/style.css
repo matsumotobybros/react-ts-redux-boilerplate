@@ -1,0 +1,12 @@
+.headerNavigation {
+    background-color: #eb5558;
+    font-size: 23px;
+    width: 100%;
+    height: 60px;
+}
+
+.headerNavigationLink {
+    margin: auto 10px auto 60px;
+    color: white;
+    text-decoration: none;
+}
