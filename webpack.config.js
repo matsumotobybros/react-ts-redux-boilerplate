@@ -3,19 +3,18 @@ const webpack = require("webpack");
 const autoprefixer = require("autoprefixer");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const sourcePath = path.join(__dirname, './src');
+const outPath = path.join(__dirname, './dist');
 module.exports = (env, argv) => {
   const mode = process.env.NODE_ENV || "development";
   const isProduction = mode === "production";
   return {
+    context: sourcePath,
     mode: mode,
-    entry: {
-      main: [
-        path.resolve(__dirname, "src/index.tsx")
-      ]
-    },
+    entry: './index.tsx',
     output: {
       filename: isProduction ? "bundle.[chunkhash].js" : "[name].js",
-      path: path.resolve(__dirname, "dist")
+      path: outPath
     },
     devtool: isProduction ? false : "source-map",
     resolve: {
@@ -101,7 +100,7 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new htmlWebpackPlugin({
-        template: path.resolve(__dirname, "src/index.html"),
+        template: "./index.html",
       }),
       new ExtractTextPlugin({
         filename: isProduction ? "bundle.[chunkhash].css" : "[name].css",
@@ -109,4 +108,4 @@ module.exports = (env, argv) => {
       }),
     ]
   }
-}
+};
