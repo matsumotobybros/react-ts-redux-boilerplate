@@ -22,6 +22,7 @@ interface PropsFromDispatch {
 type UsersProps = PropsFromState & PropsFromDispatch
 
 class UsersPage extends React.Component<UsersProps> {
+
   public componentDidMount() {
     this.props.fetchRequest()
   }
@@ -45,6 +46,7 @@ class UsersPage extends React.Component<UsersProps> {
     )
   }
 }
+
 
 // It's usually good practice to only include one context at a time in a connected component.
 // Although if necessary, you can always include multiple contexts. Just make sure to

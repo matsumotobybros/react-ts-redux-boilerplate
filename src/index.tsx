@@ -4,10 +4,20 @@ import App from "./App"
 
 import createBrowserHistory from "history/createBrowserHistory"
 import configureStore from "./store"
+// import {Provider} from "react-redux";
+// import {ConnectedRouter} from "connected-react-router";
+// import Routes from "./Routes";
 
-const history = createBrowserHistory()
+export const history = createBrowserHistory()
 const initialState: any = {}
 
 const store = configureStore(history, initialState)
 
 render(<App store={store} history={history} />, document.getElementById("root"))
+// render(
+//   <Provider store={store}>
+//     <ConnectedRouter history={history}>
+//       <Routes />
+//     </ConnectedRouter>
+//   </Provider>
+//   , document.getElementById("root"))

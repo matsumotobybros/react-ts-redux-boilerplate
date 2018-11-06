@@ -1,7 +1,6 @@
 import { fetchError, fetchSuccess } from "./actions"
-import { all, call, fork, put } from "redux-saga/effects"
-import callApi from "../../api/callApi"
-import { takeEvery } from "redux-saga"
+import { all, call, fork, put, takeEvery } from "redux-saga/effects"
+import callApi, {REQUEST_METHODS} from "../../api/callApi"
 import { UsersActionTypes } from "./types"
 
 const API_ENDPOINT =
@@ -10,7 +9,7 @@ const API_ENDPOINT =
 function* handleFetch() {
   try {
     // To call async functions, use redux-saga's `call()`.
-    const res = yield call(callApi, "get", API_ENDPOINT, "/heroStats")
+    const res = yield call(callApi, REQUEST_METHODS.GET, API_ENDPOINT, "api/heroStats")
 
     if (res.error) {
       yield put(fetchError(res.error))

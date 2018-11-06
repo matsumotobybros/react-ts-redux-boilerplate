@@ -4,29 +4,30 @@ import { applyMiddleware, combineReducers, createStore, Store } from "redux"
 import { composeWithDevTools } from "redux-devtools-extension"
 import createSagaMiddleware from "redux-saga"
 import { all, fork } from "redux-saga/effects"
-import { headerReducer, HeaderState } from "./header"
 import { usersReducer, UsersState } from "./users"
+import { authReducer, AuthState } from "./auth"
 import usersSaga from "./users/sagas"
+import authSaga from "./auth/sagas";
 
 // The top-level state object
 export interface ApplicationState {
-  header: HeaderState
   users: UsersState
+  auth: AuthState
 }
 
 // Whenever an action is dispatched, Redux will update each top-level application state property
 // using the reducer with the matching name. It's important that the names match exactly, and that
 // the reducer acts on the corresponding ApplicationState property type.
 const rootReducer = combineReducers<ApplicationState>({
-  header: headerReducer,
-  users: usersReducer
+  users: usersReducer,
+  auth: authReducer
 })
 
 // Here we use `redux-saga` to trigger actions asynchronously. `redux-saga` uses something called a
 // "generator function", which you can read about here:
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*
 function* rootSaga() {
-  yield all([fork(usersSaga)])
+  yield all([fork(usersSaga), fork(authSaga)])
 }
 
 const configureStore = (

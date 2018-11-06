@@ -4,7 +4,7 @@ import { connect } from "react-redux"
 import { NavLink } from "react-router-dom"
 import { Dispatch } from "redux"
 import { ApplicationState } from "../../store"
-import * as layoutActions from "../../store/header"
+import * as authActions from "../../store/auth"
 import styled from "../../utils/styled"
 import * as style from "./style.css"
 
@@ -13,43 +13,39 @@ interface HeaderProps {
 }
 
 interface PropsFromDispatch {
-  loginClick: typeof layoutActions.login
-  logoutClick: typeof layoutActions.logout
+  signOut: typeof authActions.signOut
 }
 
 type AllProps = HeaderProps & PropsFromDispatch
 
 class Header extends React.Component<AllProps> {
   public render() {
-    const { login, loginClick, logoutClick } = this.props
-
-    const buttonLabel = login ? "ログアウト" : "ログイン"
-    const loginAction = login ? logoutClick : loginClick
+    const { login, signOut } = this.props
+    if(!login) {
+      return ''
+    }
+    const buttonLabel = login ? "ログアウト" : ""
     const navLink = classNames("col-lg-2", style.headerNavigationLink)
 
     return (
       <div className={classNames("row", style.headerNavigation)}>
-        <NavLink exact to="/" className={navLink}>
-          Home
-        </NavLink>
         <NavLink exact to="/users" className={navLink}>
           Users
         </NavLink>
         <NavLink exact to="/communities" className={navLink}>
           communities
         </NavLink>
-        <LoginButton onClick={loginAction}>{buttonLabel}</LoginButton>
+        <LoginButton onClick={signOut}>{buttonLabel}</LoginButton>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ header }: ApplicationState) => ({
-  login: header.login
+const mapStateToProps = ({ auth }: ApplicationState) => ({
+  login: auth.authenticated
 })
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  loginClick: () => dispatch(layoutActions.login()),
-  logoutClick: () => dispatch(layoutActions.logout())
+  signOut: () => dispatch(authActions.signOut())
 })
 
 export default connect(

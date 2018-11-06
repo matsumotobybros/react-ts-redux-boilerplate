@@ -1,0 +1,17 @@
+.form {
+    max-width: 230px;
+    margin: 200px auto 0 auto;
+    border: 1px solid;
+}
+.fieldSet {
+    border-style: none;
+}
+
+.label {
+    min-width: 500px;
+}
+
+.inputForm {
+    width: 200px;
+    border: solid 1px;
+}
