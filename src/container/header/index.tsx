@@ -32,8 +32,11 @@ class Header extends React.Component<AllProps> {
         <NavLink exact to="/users" className={navLink}>
           Users
         </NavLink>
+        <NavLink exact to="/banners" className={navLink}>
+          Banners
+        </NavLink>
         <NavLink exact to="/communities" className={navLink}>
-          communities
+          Communities
         </NavLink>
         <LoginButton onClick={signOut}>{buttonLabel}</LoginButton>
       </div>

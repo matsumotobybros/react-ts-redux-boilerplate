@@ -9,7 +9,8 @@ import * as style from "./style.css";
 interface FieldProps {
   account: string,
   id: string,
-  password: string
+  password: string,
+  error: string
 }
 
 interface PropsFromDispatch {
@@ -28,11 +29,12 @@ class SignIn extends React.Component<FieldProps&PropsFromDispatch> {
 
   private handleSubmit(e : any, auth: Auth, callback: any) {
     e.preventDefault()
+    console.log(e)
     callback({account:auth.account, id: auth.id, password: auth.password})
   }
 
   public render() {
-    const { account, id, password, accountChange, idChange, passwordChange, singIn } = this.props
+    const { error, account, id, password, accountChange, idChange, passwordChange, singIn } = this.props
     return (
       <form onSubmit={(e) => this.handleSubmit(e, {account, id, password}, singIn)} className={style.form}>
         <fieldset className={style.fieldSet}>
@@ -47,9 +49,12 @@ class SignIn extends React.Component<FieldProps&PropsFromDispatch> {
           <div>Password:</div>
           <input onChange={(e) => passwordChange(e.target.value)} className={style.inputForm} />
         </fieldset>
-        <button formAction="submit" className="btn btn-primary">
-          Sign In
-        </button>
+        <fieldset className={style.buttonField}>
+          <button formAction="submit" className="btn btn-primary">
+            Sign In
+          </button>
+        </fieldset>
+        { error ? <div className={style.errMessage}>Failed to Sgin In. Please try again</div>: ""}
       </form>
     )
   }
@@ -59,7 +64,8 @@ const mapStateToProps = ({ auth }: ApplicationState) => ({
   errorMessage: auth.error,
   account: auth.account,
   id: auth.id,
-  password: auth.password
+  password: auth.password,
+  error: auth.error
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({

@@ -1,15 +1,16 @@
 import { fetchError, fetchSuccess } from "./actions"
 import { all, call, fork, put, takeEvery } from "redux-saga/effects"
-import callApi, {REQUEST_METHODS} from "../../api/callApi"
+import {callApi, REQUEST_METHODS} from "../../api/callApi"
 import { UsersActionTypes } from "./types"
 
 const API_ENDPOINT =
-  process.env.REACT_APP_API_ENDPOINT || "https://api.opendota.com"
+  process.env.REACT_APP_API_ENDPOINT || "http://localhost:3090"
 
 function* handleFetch() {
   try {
     // To call async functions, use redux-saga's `call()`.
-    const res = yield call(callApi, REQUEST_METHODS.GET, API_ENDPOINT, "api/heroStats")
+    const res = yield call(callApi, REQUEST_METHODS.GET, "https://api.opendota.com", "api/heroStats")
+    // const res = yield call(callApi, REQUEST_METHODS.GET, "http://localhost:3090", "users")
 
     if (res.error) {
       yield put(fetchError(res.error))

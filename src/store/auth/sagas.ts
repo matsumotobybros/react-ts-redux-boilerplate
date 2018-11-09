@@ -1,16 +1,21 @@
 import {all, call, fork, put, take, takeEvery} from "redux-saga/effects";
 import {AuthActionTypes} from "./types";
-import callApi, {REQUEST_METHODS} from "../../api/callApi";
+import { callApiUrl, getApiSelf, postApi,  REQUEST_METHODS} from "../../api/callApi";
 import {authError, authUser, unauthUser} from "./actions";
 import { history } from "../../index";
 
 const API_ENDPOINT =
   process.env.REACT_APP_API_ENDPOINT || "http://localhost:3090"
 
-function* login() {
+function* login(action: any) {
   try {
-    const action = yield take(AuthActionTypes.SIGN_IN)
-    const res = yield call(callApi, REQUEST_METHODS.POST, API_ENDPOINT, "signin", action.payload)
+    // const action = yield take(AuthActionTypes.SIGN_IN)
+    var params = new URLSearchParams();
+    params.append('username', action.payload.id);
+    params.append('password', action.payload.password);
+    const res = yield call(getApiSelf, "http://localhost:8080", "self", action.payload)
+    // const res = yield call(postApi, "http://localhost:8082", "login", params)
+    // const res = yield call(callApi, REQUEST_METHODS.POST, "http://localhost:3090", "signin", action.payload)
     if (res.error) {
       yield put(authError(res.error))
     } else {
@@ -18,7 +23,7 @@ function* login() {
         put(authUser()),
         localStorage.setItem("token", res.token)]
         history.push("/users")
-      // TODO: redirect to /home by using browserHistory
+        // TODO: redirect to /home by using browserHistory
     }
   } catch (err) {
     if( err instanceof Error) {

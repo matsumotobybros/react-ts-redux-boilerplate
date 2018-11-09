@@ -1,0 +1,83 @@
+.editButtons {
+    text-align: right;
+    margin-top: 10px;
+}
+.editButton {
+    margin: 10px;
+}
+
+.bannerPage {
+    /*min-width: 800px;*/
+    /*margin: 0;*/
+}
+.bannerCardContainer {
+    /*max-width: 800px;*/
+    /*margin: 0 auto 0 auto;*/
+}
+
+.bannerCard {
+    /*width: 200px;*/
+    /*border: solid 1px;*/
+    /*margin: 5px 5px 5px 5px;*/
+    /*padding: 20px;*/
+}
+
+.table {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    line-height: 1.5;
+    width: 100%;
+    /*margin: 0 auto 0 auto;*/
+}
+
+.th {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    line-height: 1.5;
+    width: 80px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    background: #3f3f3f;
+    color: #ffffff;
+}
+
+.td {
+    width: 80px;
+    padding: 10px;
+    vertical-align: top;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    line-height: 1.5;
+}
+
+.buttonHolder {
+    text-align: center;
+}
+
+.topSection {
+    margin: 10px 0 10px 0;
+}
+
+.editingForm {
+    margin: 10px;
+}
+
+.editingInputForm {
+    padding: 10px;
+}
+
+.editingSection {
+    border: 1px solid;
+    width: 200px;
+    margin: 0 auto 0 auto;
+}
+
+.newButton {
+    margin: 10px 10px 10px auto;
+}
+
+.tableButton {
+    width: 100%;
+    text-align: center;
+}

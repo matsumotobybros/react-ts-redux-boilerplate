@@ -29,6 +29,7 @@ class UsersPage extends React.Component<UsersProps> {
 
   public render() {
     const { loading, data } = this.props
+
     return (
       <div className={style.userPage}>
         {loading && <div>Loading...</div>}
