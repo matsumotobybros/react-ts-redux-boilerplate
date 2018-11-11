@@ -8,7 +8,7 @@
     "prestart:dev": "npm run tcm",
     "prebuild": "npm run tcm",
     "prebuild:dev": "npm run tcm",
-    "start:dev": "webpack-serve --host 0.0.0.0 --open",
+    "start:dev": "webpack-dev-server --open",
     "build": "NODE_ENV=production webpack",
     "build:dev": "webpack --watch --display --verbose --progress",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -19,6 +19,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/classnames": "^2.2.6",
     "@types/history": "^4.7.2",
     "@types/node": "^10.12.1",
@@ -26,6 +27,7 @@
     "@types/react-dom": "^16.0.9",
     "@types/react-redux": "^6.0.9",
     "@types/react-router-dom": "^4.3.1",
+    "@types/react-table": "^6.7.15",
     "autoprefixer": "^9.3.1",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^1.0.1",
@@ -47,9 +49,11 @@
     "url-loader": "^1.1.2",
     "webpack": "^4.23.1",
     "webpack-cli": "^3.1.2",
-    "webpack-serve": "^2.0.2"
+    "webpack-dev-server": "^3.1.10"
   },
   "dependencies": {
+    "antd-data-table": "^1.0.0",
+    "axios": "^0.18.0",
     "classnames": "^2.2.6",
     "connected-react-router": "^4.5.0",
     "emotion": "^9.2.12",
@@ -60,6 +64,7 @@
     "react-emotion": "^9.2.12",
     "react-redux": "^5.1.0",
     "react-router-dom": "^4.3.1",
+    "react-table": "^6.8.6",
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.5",
     "redux-saga": "^0.16.2",

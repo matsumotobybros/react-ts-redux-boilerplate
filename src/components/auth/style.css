@@ -1,0 +1,27 @@
+.form {
+    max-width: 230px;
+    margin: 200px auto 0 auto;
+    border: 1px solid;
+    padding: 15px;
+}
+.fieldSet {
+    border-style: none;
+}
+.buttonField {
+    border-style: none;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.label {
+    min-width: 500px;
+}
+
+.inputForm {
+    width: 200px;
+    border: solid 1px;
+}
+
+.errMessage {
+    color: red;
+}

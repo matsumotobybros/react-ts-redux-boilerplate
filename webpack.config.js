@@ -80,7 +80,6 @@ module.exports = (env, argv) => {
             },{
                 loader: "typed-css-modules-loader",
                 options: {
-                  camelCase: true,
                   searchDir: "./src",
                   outDir: "./typings"
                 }

@@ -1,5 +1,7 @@
+
 export interface User {
-  id: number
+  account: string
+  id: string
   name: string
   localized_name: string
   icon: string
