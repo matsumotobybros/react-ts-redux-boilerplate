@@ -3,7 +3,6 @@ import {Reducer} from "redux";
 
 const initialState: AuthState = {
   authenticated: false,
-  account: '',
   id: '',
   password: '',
   error: ''
@@ -17,8 +16,6 @@ const reducer: Reducer<AuthState> = (state = initialState, action ) => {
       return { ...state, authenticated:false }
     case AuthActionTypes.AUTH_ERROR:
       return { ...state, error: action.payload }
-    case  AuthActionTypes.ACCOUNT_CHANGE:
-      return { ...state, account: action.payload }
     case  AuthActionTypes.ID_CHANGE:
       return { ...state, id: action.payload }
     case  AuthActionTypes.PASSWORD_CHANGE:

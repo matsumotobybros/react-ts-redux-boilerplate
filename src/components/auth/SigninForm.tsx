@@ -7,7 +7,6 @@ import {connect} from "react-redux";
 import * as style from "./style.css";
 
 interface FieldProps {
-  account: string,
   id: string,
   password: string,
   error: string
@@ -15,7 +14,6 @@ interface FieldProps {
 
 interface PropsFromDispatch {
   singIn: typeof authActions.signIn
-  accountChange: typeof authActions.accountChange
   idChange: typeof authActions.idChange
   passwordChange: typeof authActions.passwordChange
 }
@@ -30,17 +28,13 @@ class SignIn extends React.Component<FieldProps&PropsFromDispatch> {
   private handleSubmit(e : any, auth: Auth, callback: any) {
     e.preventDefault()
     console.log(e)
-    callback({account:auth.account, id: auth.id, password: auth.password})
+    callback({id: auth.id, password: auth.password})
   }
 
   public render() {
-    const { error, account, id, password, accountChange, idChange, passwordChange, singIn } = this.props
+    const { error, id, password, idChange, passwordChange, singIn } = this.props
     return (
-      <form onSubmit={(e) => this.handleSubmit(e, {account, id, password}, singIn)} className={style.form}>
-        <fieldset className={style.fieldSet}>
-          <div>Account:</div>
-          <input onChange={(e) => accountChange(e.target.value)} className={style.inputForm} />
-        </fieldset>
+      <form onSubmit={(e) => this.handleSubmit(e, {id, password}, singIn)} className={style.form}>
         <fieldset className={style.fieldSet}>
           <div>Id:</div>
           <input onChange={(e) => idChange(e.target.value)} className={style.inputForm} />
@@ -62,7 +56,6 @@ class SignIn extends React.Component<FieldProps&PropsFromDispatch> {
 
 const mapStateToProps = ({ auth }: ApplicationState) => ({
   errorMessage: auth.error,
-  account: auth.account,
   id: auth.id,
   password: auth.password,
   error: auth.error
@@ -70,7 +63,6 @@ const mapStateToProps = ({ auth }: ApplicationState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   singIn: (auth: Auth) => dispatch(authActions.signIn(auth)),
-  accountChange: (account: string) => dispatch(authActions.accountChange(account)),
   idChange: (id: string) => dispatch(authActions.idChange(id)),
   passwordChange: (password: string) => dispatch(authActions.passwordChange(password))
 

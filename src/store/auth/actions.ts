@@ -11,10 +11,6 @@ export const unauthUser = () => action(AuthActionTypes.UNAUTH_USER)
 
 export const authError = (message: string) => action(AuthActionTypes.AUTH_ERROR, message)
 
-
-// move them to form folder later
-export const accountChange = (account: string) => action(AuthActionTypes.ACCOUNT_CHANGE, account)
-
 export const idChange = (id: string) => action(AuthActionTypes.ID_CHANGE, id)
 
 export const passwordChange = (password: string) => action(AuthActionTypes.PASSWORD_CHANGE, password)

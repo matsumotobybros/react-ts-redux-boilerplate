@@ -9,7 +9,7 @@ import styled from "../../utils/styled"
 import * as style from "./style.css"
 
 interface HeaderProps {
-  login: boolean
+  authenticated: boolean
 }
 
 interface PropsFromDispatch {
@@ -20,11 +20,11 @@ type AllProps = HeaderProps & PropsFromDispatch
 
 class Header extends React.Component<AllProps> {
   public render() {
-    const { login, signOut } = this.props
-    if(!login) {
+    const { authenticated, signOut } = this.props
+    if(!authenticated) {
       return ''
     }
-    const buttonLabel = login ? "ログアウト" : ""
+    const buttonLabel = authenticated ? "ログアウト" : ""
     const navLink = classNames("col-lg-2", style.headerNavigationLink)
 
     return (
@@ -45,7 +45,7 @@ class Header extends React.Component<AllProps> {
 }
 
 const mapStateToProps = ({ auth }: ApplicationState) => ({
-  login: auth.authenticated
+  authenticated: auth.authenticated
 })
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   signOut: () => dispatch(authActions.signOut())

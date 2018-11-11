@@ -5,3 +5,6 @@ coverage/
 storybook-static/
 typings/**/*.css.d.ts
 typings/**/*.scss.d.ts
+
+mock/server/config.js
+mock/server/node_modules
